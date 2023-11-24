@@ -153,7 +153,7 @@ class AnalyticalGaussianIntegrator(AbstractIntegrator):
         sq_error = jnp.square(y - mean)
         log2pi = jnp.log(2.0 * jnp.pi)
         val = jnp.sum(
-            log2pi + jnp.log(obs_stddev) + (sq_error + variance) / obs_stddev, axis=1
+            log2pi + jnp.log(obs_stddev**2) + (sq_error + variance) / obs_stddev**2, axis=1
         )
         return -0.5 * val
 
