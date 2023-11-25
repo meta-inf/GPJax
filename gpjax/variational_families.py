@@ -287,7 +287,7 @@ class WhitenedVariationalGaussian(VariationalGaussian):
         """
         # Unpack variational parameters
         mu = self.variational_mean
-        sqrt = self.variational_root_covariance
+        sqrt = jnp.tril(self.variational_root_covariance)
         z = self.inducing_inputs
 
         # Unpack mean function and kernel
